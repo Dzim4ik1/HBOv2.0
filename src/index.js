@@ -1,4 +1,10 @@
+import './styles/main.scss'
 import { data  } from "./data.js";
+import { orderBy } from 'lodash'
+
+import Star from './assets/images/star.png'
+import Play from './assets/images/play.png'
+
 
 // custom checkbox
 const checkbox = document.querySelector(".custom-checkbox");
@@ -52,18 +58,40 @@ window.addEventListener("resize", () => {
 });
 
 // slider Hero section
+import img1 from './assets/images/1.png';
+import img2 from './assets/images/2.png';
+import img3 from './assets/images/3.png';
 
+import img1t from './assets/images/Group1.png';
+import img2t from './assets/images/Group2.png';
+import img3t from './assets/images/Group3.png';
+
+let img;
 const filmSlider = () => {
   const filmTitle = document.querySelector(".film-title");
   const filmImg = document.querySelector(".hero .container");
-
+	 
   let index = 1;
+
+	
   setInterval(() => {
     index += 1;
     index > 3 ? index = 1 :  index + 1
 		
-    filmImg.style.backgroundImage = `url(./assets/img/Main-slider-img/${index}.png)`;
-    filmTitle.src = `./assets/img/Main-slider-img/Group${index}.png`;
+		if (index == 1){
+			filmImg.style.backgroundImage  = `url(${img1})` 
+			filmTitle.src = `${img1t}`;
+
+		} else if (index == 2){
+			filmImg.style.backgroundImage  = `url(${img2})` 
+			filmTitle.src = `${img2t}`;
+			
+		}  else if (index == 3){
+			filmImg.style.backgroundImage  = `url(${img3})`
+			filmTitle.src = `${img3t}`;
+		}
+		
+		
   }, 4000);
 }
 filmSlider();
@@ -106,7 +134,7 @@ return `
 									<img class="card-img" src="${element.image}" alt="${element.title}">
 										<div class="card_info">
 											<div class="card_info-header">
-												<div class="rating"><img src="./assets/img/star.png" alt="star">
+												<div class="rating"><img src="${Star}" alt="star">
 													<p>${element.rating}</p>
 												</div>
 												<div class="year">
@@ -118,7 +146,7 @@ return `
 												<p>${element.description}</p>
 											</div>
 											<div class="card_info-footer">
-												<a class="btn-watch"><img src="./assets/img/play.png">
+												<a class="btn-watch"><img  src="${Play}">
 													<p>WATCH</p>
 												</a>
 											</div>
@@ -141,4 +169,5 @@ arrTypes.forEach(setItemTemplate);
 
 //faqs
 
-
+const filmByYear = orderBy(data, ['year'],['asc'])
+console.log(filmByYear);
