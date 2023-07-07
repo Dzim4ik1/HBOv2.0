@@ -129,7 +129,7 @@ const movieType = data.map(( {type} ) => type);
 const arrTypes = [... new Set(movieType)];
 
 const getTemplate = (element) => {
-return `
+  return `
 									<div class="card">
 									<img class="card-img" src="${element.image}" alt="${element.title}">
 										<div class="card_info">
@@ -152,8 +152,8 @@ return `
 											</div>
 										</div>
 									</div>
-			`
-}
+			`;
+};
 
 const setItemTemplate = (type) => {
 	data.forEach((movie) => {
@@ -168,6 +168,14 @@ const setItemTemplate = (type) => {
 arrTypes.forEach(setItemTemplate);
 
 //faqs
+const faqs = document.querySelectorAll('.faq_item')
 
+faqs.forEach((faq)=> {
+	faq.addEventListener('click', ()=>{
+		faq.classList.toggle('open')
+	})
+})
+
+//lodash
 const filmByYear = orderBy(data, ['year'],['asc'])
 console.log(filmByYear);
