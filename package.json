@@ -1,18 +1,24 @@
 {
   "name": "HBO",
   "version": "1.01.01",
+	"repository": {
+		"url": "git+https://github.com/Dzim4ik1/HBOv2.0.git"
+	},
   "description": "",
   "private": true,
   "scripts": {
     "build": "webpack",
     "watch": "webpack --watch",
-    "start": "webpack serve --open"
+    "start": "webpack serve --open",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^6.8.1",
     "css-minimizer-webpack-plugin": "^5.0.1",
+    "gh-pages": "^5.0.0",
     "html-loader": "^4.2.0",
     "html-minimizer-webpack-plugin": "^4.4.0",
     "html-webpack-plugin": "^5.5.3",
